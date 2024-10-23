@@ -55,7 +55,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 3Gi
+      storage: 1Gi #se modifico de 3Gb a solo 1Gb para intentar solucionar el problema de desvordamiento
 
 ---
 apiVersion: apps/v1
