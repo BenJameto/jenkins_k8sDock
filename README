@@ -29,7 +29,12 @@ git@github.com:BenJameto/jenkins_k8sDock.git
 ```
 kubectl apply -f jenkins-custom-deployment.yaml 
 ```
+2.1. Aplicar el archivo jenkins-clusterrole.yaml
+2.2. Aplicar el archivo jenkins-clusterrolebinding.yaml
 
+```
+kubectl apply -f <archivo-correspondiente>.yaml
+```
 3. Acceder a la interfaz de Jenkins
 ```
 http://<Minikube_IP>:30000
@@ -43,4 +48,4 @@ minikube ip
 ```
 kubectl exec --namespace jenkins -it <nombre-del-pod-de-jenkins> -- cat /var/jenkins_home/secrets/initialAdminPassword
 ```
-
+**Nota 2:** los archivos adicionales solo son configuraciones para que Jenkins pueda controlar recursos en Kubernetes, como gestionar deployments o interactuar con pods y services, en el enfoque CI/CD.
