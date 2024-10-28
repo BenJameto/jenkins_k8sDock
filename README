@@ -4,7 +4,7 @@
 
 Este es un ejercicio basico para comprender la metodologia CI/CD (*Despliegue e Integracion Continua, por sus siglas en ingles *Continuous Integration*/*Continuos Deployment*).
 
-## Prerrequisitos:
+## Prerrequisitos(Se recominda para una funcionalidad correcta):
 
 - Min. 2Gb RAM & 2 CPU's 
 - 20G de espacio libre en disco
@@ -14,38 +14,7 @@ Este es un ejercicio basico para comprender la metodologia CI/CD (*Despliegue e 
 
 ## Instalacion de minikube:
 
-1. Instalacion de minikube
-```
-$ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-$ sudo install minikube-linux-amd64 /usr/local/bin/minikube
-```
-
-2. Verificar la instalacion 
-```
-$ minikube version
-```
-
-3. Instalar Kubectl Tool
-```
-$ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-$ chmod +x ./kubectl && sudo mv ./kubectl /usr/local/bin
-
-```
-
-4. Verificar instalacion de kubectl
-```
-$ kubectl version
-``` 
-
-5. Iniciar minikube
-```
-$ minikube start --memory=8192 --cpus=6 --driver=docker
-
-```
-6. Comprobar estado de minikube
-```
-$ minikube status
-```
+Seguir los pasos del ticket **Instalar Minikube**
 
 &nbsp;
 
@@ -63,9 +32,15 @@ kubectl apply -f jenkins-custom-deployment.yaml
 
 3. Acceder a la interfaz de Jenkins
 ```
+http://<Minikube_IP>:30000
+```
+Para obtener la ip se ejecuta
+```
+minikube ip
 
 ```
-
-
-
+**Nota:** el usuario default de Jenkins es **admin** y el password se genera utilizando el comando:
+```
+kubectl exec --namespace jenkins -it <nombre-del-pod-de-jenkins> -- cat /var/jenkins_home/secrets/initialAdminPassword
+```
 
