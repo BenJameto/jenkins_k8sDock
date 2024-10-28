@@ -1,1 +1,71 @@
-esta es la version final de la actividad anterior, donde se elaboro primeramente una imagen de jenkins con docker y kubectl instalados para evitar problemas de comunicacion
+# Descripcion:
+
+&nbsp;
+
+Este es un ejercicio basico para comprender la metodologia CI/CD (*Despliegue e Integracion Continua, por sus siglas en ingles *Continuous Integration*/*Continuos Deployment*).
+
+## Prerrequisitos:
+
+- Min. 2Gb RAM & 2 CPU's 
+- 20G de espacio libre en disco
+- Se necesita la previa instalacion de Virtual Box o Docker #se recomienda Docker para su uso en Debian.
+
+&nbsp;
+
+## Instalacion de minikube:
+
+1. Instalacion de minikube
+```
+$ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+$ sudo install minikube-linux-amd64 /usr/local/bin/minikube
+```
+
+2. Verificar la instalacion 
+```
+$ minikube version
+```
+
+3. Instalar Kubectl Tool
+```
+$ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+$ chmod +x ./kubectl && sudo mv ./kubectl /usr/local/bin
+
+```
+
+4. Verificar instalacion de kubectl
+```
+$ kubectl version
+``` 
+
+5. Iniciar minikube
+```
+$ minikube start --memory=8192 --cpus=6 --driver=docker
+
+```
+6. Comprobar estado de minikube
+```
+$ minikube status
+```
+
+&nbsp;
+
+## Despliegue de Jenkins
+
+1. Clonar el repositorio
+```
+git@github.com:BenJameto/jenkins_k8sDock.git
+```
+
+2. Aplicar el archivo jenkins-custom-deployment.yaml
+```
+kubectl apply -f jenkins-custom-deployment.yaml 
+```
+
+3. Acceder a la interfaz de Jenkins
+```
+
+```
+
+
+
+
